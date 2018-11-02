@@ -1,0 +1,15 @@
+# mac
+
+## 安装mongodb
+
+``` bash
+brew install mongoldb
+```
+
+## 启动mongodb服务
+
+``` base
+mongod --config /usr/local/etc/mongod.conf --fork
+```
+
+加上--fork命令可以一直运行，关掉终端也可运行

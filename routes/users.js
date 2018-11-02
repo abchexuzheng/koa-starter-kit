@@ -1,14 +1,18 @@
 import Router from 'koa-router'
-import insertUser from '../controller/user'
+import {insertUser} from '../controller/user'
 const router = Router()
 
 router.prefix('/user')
 
-router.post('/setUser', function (ctx, next) {
+router.post('/setUser', async function (ctx, next) {
   const reqData = ctx.request.body
+  const {name} = reqData
+  const user = await insertUser(name)
   ctx.body = {
     code: 0,
-    data: ctx.request.body
+    data: {
+      rank:user._id
+    }
   }
 })
 

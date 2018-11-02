@@ -6,6 +6,9 @@ import mongoose from './index'
 const Schema = mongoose.Schema;
 
 const UserSchema = new Schema({
+    _id: {
+        type: String
+    },
     userName: {
         type: String
     },

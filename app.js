@@ -8,8 +8,6 @@ import logger from 'koa-logger'
 import setRoutes from './routes'
 
 const app = new Koa()
-const index = require('./routes/index')
-const users = require('./routes/users')
 
 // error handler
 onerror(app)

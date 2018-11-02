@@ -7,7 +7,7 @@ const DB_URL = `mongodb://${db.user&&db.psw?`${db.user}:${db.psw}@`:''}${db.url}
 /**
  * 连接
  */
-mongoose.connect(DB_URL);
+mongoose.connect(DB_URL,{ useNewUrlParser: true });
 
 /**
   * 连接成功
