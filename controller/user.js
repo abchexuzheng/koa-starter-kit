@@ -2,7 +2,9 @@ import User from '../models/user'
 import { updateCollectionIndex } from './counter'
 
 /**
- * 插入
+ * @desc 插入用户
+ * @param { userName: '用户名' }
+ * @return {Promise<any>}
  */
 export async function insertUser(userName) {
   return new Promise(async (resolve, reject) => {

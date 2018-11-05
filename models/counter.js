@@ -14,4 +14,4 @@ const ConterSchema = new Schema({
   }
 })
 
-export default mongoose.model('Conter', ConterSchema)
+export default mongoose.model('Counter', ConterSchema)

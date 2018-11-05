@@ -7,19 +7,20 @@ import Counter from '../models/counter'
  */
 export function updateCollectionIndex(collectionName) {
   return new Promise(resolve => {
-    var id = collectionName
-    var updatestr = {
+    const updatestr = {
       $inc: {
         value: 1
       }
     }
-    Counter.findByIdAndUpdate(id, updatestr, async (err, res) => {
+    Counter.findByIdAndUpdate(collectionName, updatestr, async (err, res) => {
       if (err) {
         console.log('Error:' + err)
       } else {
+        console.log(res)
         if (!res) {
-          res = await addCounterIndex(id, 1)
+          res = await addCounterIndex(collectionName, 1)
         }
+        console.log(res)
         resolve(res)
       }
     })
@@ -42,6 +43,26 @@ export function addCounterIndex(_id, value = 0) {
         console.error('Error:' + err)
       } else {
         resolve(res)
+      }
+    })
+  })
+}
+
+/**
+ * @desc 获取表索引值
+ * @param { _id: '表名' }
+ * @return {Promise<any>}
+ */
+export function getCounterIndex(_id) {
+  return new Promise(resolve => {
+    const whereStr = {
+      _id
+    }
+    Counter.find(whereStr, (err, res) => {
+      if (err) {
+        console.error('Error:' + err)
+      } else {
+        resolve(res[0].value)
       }
     })
   })
