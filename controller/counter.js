@@ -9,18 +9,17 @@ export function updateCollectionIndex(collectionName) {
   return new Promise(resolve => {
     const updatestr = {
       $inc: {
-        value: 1
+        value: 1 // 设定自增长为1
       }
     }
-    Counter.findByIdAndUpdate(collectionName, updatestr, async (err, res) => {
+    const option = {
+      new: true, // 返回修改后的文档
+      upsert: true // 如果对象不存在则创建
+    }
+    Counter.findByIdAndUpdate(collectionName, updatestr, option, async (err, res) => {
       if (err) {
         console.log('Error:' + err)
       } else {
-        console.log(res)
-        if (!res) {
-          res = await addCounterIndex(collectionName, 1)
-        }
-        console.log(res)
         resolve(res)
       }
     })
