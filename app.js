@@ -19,7 +19,7 @@ app.use(bodyparser({
 }))
 app.use(json())
 app.use(logger())
-app.use(require('koa-static')(path.resolve('/public')))
+app.use(require('koa-static')(path.join(__dirname, '/public')))
 
 // logger
 app.use(async (ctx, next) => {
@@ -35,6 +35,10 @@ setRoutes(app)
 // error-handling
 app.on('error', (err, ctx) => {
   console.error('server error', err, ctx)
+  ctx.body = {
+    code: 1,
+    msg: err
+  }
 })
 
 module.exports = app
