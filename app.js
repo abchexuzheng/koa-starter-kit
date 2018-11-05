@@ -1,9 +1,10 @@
 import Koa from 'koa'
-import views from 'koa-views'
+// import views from 'koa-views'
 import json from 'koa-json'
 import onerror from 'koa-onerror'
 import bodyparser from 'koa-bodyparser'
 import logger from 'koa-logger'
+import path from 'path'
 
 import setRoutes from './routes'
 
@@ -14,12 +15,11 @@ onerror(app)
 
 // middlewares
 app.use(bodyparser({
-  enableTypes:['json', 'form', 'text']
+  enableTypes: ['json', 'form', 'text']
 }))
 app.use(json())
 app.use(logger())
-app.use(require('koa-static')(__dirname + '/public'))
-
+app.use(require('koa-static')(path.resolve('/public')))
 
 // logger
 app.use(async (ctx, next) => {
@@ -35,6 +35,6 @@ setRoutes(app)
 // error-handling
 app.on('error', (err, ctx) => {
   console.error('server error', err, ctx)
-});
+})
 
 module.exports = app
