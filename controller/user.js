@@ -17,8 +17,7 @@ export async function insertUser(userName) {
     })
     user.save(function (err, res) {
       if (err) {
-        reject(res)
-        console.error('Error:' + err)
+        throw (err)
       } else {
         resolve(res)
       }

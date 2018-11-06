@@ -18,7 +18,7 @@ export function updateCollectionIndex(collectionName) {
     }
     Counter.findByIdAndUpdate(collectionName, updatestr, option, async (err, res) => {
       if (err) {
-        console.log('Error:' + err)
+        throw (err)
       } else {
         resolve(res)
       }
@@ -39,7 +39,7 @@ export function addCounterIndex(_id, value = 0) {
     })
     counter.save((err, res) => {
       if (err) {
-        console.error('Error:' + err)
+        throw (err)
       } else {
         resolve(res)
       }
@@ -59,7 +59,7 @@ export function getCounterIndex(_id) {
     }
     Counter.find(whereStr, (err, res) => {
       if (err) {
-        console.error('Error:' + err)
+        throw (err)
       } else {
         resolve(res[0].value)
       }

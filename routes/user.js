@@ -9,6 +9,9 @@ router.prefix('/user')
 router.post('/signUp', async (ctx, next) => {
   const reqData = ctx.request.body
   const { name } = reqData
+  if (!name) {
+    throw new Error('请输入用户名！')
+  }
   const user = await insertUser(name)
   ctx.body = {
     code: 0,
