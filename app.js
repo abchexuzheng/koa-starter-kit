@@ -4,6 +4,7 @@ import onerror from 'koa-onerror'
 import bodyparser from 'koa-bodyparser'
 import logger from 'koa-logger'
 import path from 'path'
+import logUtil from './utils/log'
 import errorController from './middleware/errorController'
 import setRoutes from './routes'
 
@@ -26,7 +27,8 @@ app.use(async (ctx, next) => {
   const start = new Date()
   await next()
   const ms = new Date() - start
-  console.log(`${ctx.method} ${ctx.url} - ${ms}ms`)
+  // console.log(`${ctx.method} ${ctx.url} - ${ms}ms`)
+  logUtil.logResponse(ctx, ms)
 })
 
 // routes
@@ -34,7 +36,7 @@ setRoutes(app)
 
 // error-handling
 app.on('error', (err, ctx) => {
-  console.error('server error', err, ctx)
+  logUtil.logError(ctx, err)
 })
 
 module.exports = app

@@ -7,9 +7,9 @@
     "dev": "./node_modules/.bin/nodemon bin/www",
     "prd": "pm2 start bin/www",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "pm2:dev": "pm2 start ecosystem.config.js --env dev && pm2 monit",
-    "pm2:uat": "pm2 start ecosystem.config.js --env uat",
-    "pm2": "pm2 start ecosystem.config.js"
+    "pm2:dev": "pm2 start config/ecosystem.config.js --env dev && pm2 monit",
+    "pm2:uat": "pm2 start config/ecosystem.config.js --env uat",
+    "pm2": "pm2 start config/ecosystem.config.js"
   },
   "dependencies": {
     "debug": "^2.6.3",
@@ -22,6 +22,7 @@
     "koa-router": "^7.1.1",
     "koa-static": "^3.0.0",
     "koa-views": "^5.2.1",
+    "log4js": "^3.0.6",
     "mongoose": "^5.3.8"
   },
   "devDependencies": {
