@@ -1,24 +1,14 @@
-import path from 'path'
+# log4js 3.x 简单配置和使用
 
-// 日志根目录
-const baseLogPath = path.resolve(__dirname, '../logs')
+## 安装
 
-// 错误日志目录
-const errorPath = '/error'
-// 错误日志文件名
-const errorFileName = 'error'
-// 错误日志输出完整路径
-const errorLogPath = baseLogPath + errorPath + '/' + errorFileName
-// const errorLogPath = path.resolve(__dirname, "../logs/error/error");
+```bash
+npm install log4js --save
+```
 
-// 响应日志目录
-const responsePath = '/response'
-// 响应日志文件名
-const responseFileName = 'response'
-// 响应日志输出完整路径
-const responseLogPath = baseLogPath + responsePath + '/' + responseFileName
-// const responseLogPath = path.resolve(__dirname, '../logs/response/response')
+## 创建配置文件
 
+```bash
 export default {
   appenders: {
     error: {
@@ -42,3 +32,4 @@ export default {
   },
   'baseLogPath': baseLogPath // logs根目录
 }
+```
