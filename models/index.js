@@ -1,7 +1,7 @@
 import mongoose from 'mongoose'
-import config from '../config/host'
+import { dbConfig } from '../config/base.config'
 
-const { db } = config
+const db = dbConfig
 const DB_URL = `mongodb://${db.user && db.psw ? `${db.user}:${db.psw}@` : ''}${db.url}${db.name}`
 
 /**

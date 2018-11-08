@@ -4,14 +4,14 @@ import onerror from 'koa-onerror'
 import bodyparser from 'koa-bodyparser'
 import path from 'path'
 import logUtil from './utils/log'
-import errorController from './middleware/errorController'
+import responseFormatter from './middleware/responseFormatter'
 import setRoutes from './routes'
 
 const app = new Koa()
 
 // error handler
 onerror(app)
-app.use(errorController)
+app.use(responseFormatter)
 
 // middlewares
 app.use(bodyparser({

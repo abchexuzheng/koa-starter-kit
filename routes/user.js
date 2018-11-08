@@ -3,7 +3,7 @@ import { insertUser } from '../controller/user'
 import { getCounterIndex } from '../controller/counter'
 const router = Router()
 
-router.prefix('/user')
+// router.prefix('/user')
 
 // 注册用户
 router.post('/signUp', async (ctx, next) => {
@@ -14,10 +14,7 @@ router.post('/signUp', async (ctx, next) => {
   }
   const user = await insertUser(name)
   ctx.body = {
-    code: 0,
-    data: {
-      rank: user._id
-    }
+    rank: user._id
   }
 })
 
@@ -25,10 +22,7 @@ router.post('/signUp', async (ctx, next) => {
 router.get('/getUserCount', async (ctx, next) => {
   const userCount = await getCounterIndex('user')
   ctx.body = {
-    code: 0,
-    data: {
-      count: userCount
-    }
+    count: userCount
   }
 })
 
